@@ -12,6 +12,7 @@ import UserNotifications
 @main
 struct AppYogi_Task_ManagementApp: App {
     init() {
+        UNUserNotificationCenter.current().delegate = NotificationDelegate.shared
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
             if let error = error {
                 print("Notification permission error: \(error)")

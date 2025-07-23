@@ -15,6 +15,7 @@ struct ContentView: View {
     @State private var editTask: TaskItem? = nil
     @State private var searchText: String = ""
     @State private var showAnalytics = false
+    @ObservedObject var notificationDelegate = NotificationDelegate.shared
     
     var filteredTasks: [TaskItem] {
         if searchText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
@@ -28,81 +29,97 @@ struct ContentView: View {
     
     var body: some View {
         NavigationView {
-            VStack {
-                SearchBar(text: $searchText)
-                List {
-                    ForEach(groupedFilteredTasks(), id: \.0) { section, tasks in
-                        Section(header: Text(section)) {
-                            ForEach(tasks) { task in
-                                HStack {
-                                    Button(action: { viewModel.toggleCompletion(task) }) {
-                                        Image(systemName: task.isCompleted ? "checkmark.circle.fill" : "circle")
-                                            .foregroundColor(task.isCompleted ? .green : .gray)
-                                    }
-                                    .buttonStyle(PlainButtonStyle())
-                                    VStack(alignment: .leading) {
-                                        Text(task.title)
-                                            .strikethrough(task.isCompleted)
-                                            .font(.headline)
-                                        if let details = task.details, !details.isEmpty {
-                                            Text(details)
-                                                .font(.subheadline)
+            ScrollViewReader { proxy in
+                VStack {
+                    SearchBar(text: $searchText)
+                    List {
+                        ForEach(groupedFilteredTasks(), id: \.0) { section, tasks in
+                            Section(header: Text(section).id(section)) {
+                                ForEach(tasks) { task in
+                                    HStack {
+                                        Button(action: { viewModel.toggleCompletion(task) }) {
+                                            Image(systemName: task.isCompleted ? "checkmark.circle.fill" : "circle")
+                                                .foregroundColor(task.isCompleted ? .green : .gray)
+                                        }
+                                        .buttonStyle(PlainButtonStyle())
+                                        VStack(alignment: .leading) {
+                                            Text(task.title)
+                                                .strikethrough(task.isCompleted)
+                                                .font(.headline)
+                                            if let details = task.details, !details.isEmpty {
+                                                Text(details)
+                                                    .font(.subheadline)
+                                                    .foregroundColor(.secondary)
+                                            }
+                                            Text("Due: \(task.dueDate, formatter: dateFormatter)")
+                                                .font(.caption)
                                                 .foregroundColor(.secondary)
                                         }
-                                        Text("Due: \(task.dueDate, formatter: dateFormatter)")
-                                            .font(.caption)
-                                            .foregroundColor(.secondary)
+                                        Spacer()
+                                        Button(action: { editTask = task }) {
+                                            Image(systemName: "pencil")
+                                        }
+                                        .buttonStyle(BorderlessButtonStyle())
+                                        Button(action: { viewModel.deleteTask(task) }) {
+                                            Image(systemName: "trash")
+                                                .foregroundColor(.red)
+                                        }
+                                        .buttonStyle(BorderlessButtonStyle())
                                     }
-                                    Spacer()
-                                    Button(action: { editTask = task }) {
-                                        Image(systemName: "pencil")
-                                    }
-                                    .buttonStyle(BorderlessButtonStyle())
-                                    Button(action: { viewModel.deleteTask(task) }) {
-                                        Image(systemName: "trash")
-                                            .foregroundColor(.red)
-                                    }
-                                    .buttonStyle(BorderlessButtonStyle())
                                 }
                             }
                         }
                     }
-                }
-                .listStyle(InsetGroupedListStyle())
-                .navigationTitle("Tasks")
-                .toolbar {
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        Button(action: { showAddTask = true }) {
-                            Image(systemName: "plus")
+                    .listStyle(InsetGroupedListStyle())
+                    .navigationTitle("Tasks")
+                    .toolbar {
+                        ToolbarItem(placement: .navigationBarTrailing) {
+                            Button(action: { showAddTask = true }) {
+                                Image(systemName: "plus")
+                            }
+                        }
+                        ToolbarItem(placement: .navigationBarLeading) {
+                            Button(action: { showAnalytics = true }) {
+                                Image(systemName: "chart.bar.xaxis")
+                            }
                         }
                     }
-                    ToolbarItem(placement: .navigationBarLeading) {
-                        Button(action: { showAnalytics = true }) {
-                            Image(systemName: "chart.bar.xaxis")
+                    .sheet(isPresented: $showAddTask) {
+                        AddEditTaskView { title, details, dueDate, reminderEnabled in
+                            viewModel.addTask(title: title, details: details, dueDate: dueDate, reminderEnabled: reminderEnabled)
+                            viewModel.fetchTasks()
+                        }
+                    }
+                    .sheet(item: $editTask) { task in
+                        AddEditTaskView(task: task) { title, details, dueDate, reminderEnabled in
+                            viewModel.updateTask(task, title: title, details: details, dueDate: dueDate, reminderEnabled: reminderEnabled)
+                            viewModel.fetchTasks()
+                        }
+                    }
+                    .sheet(isPresented: $showAnalytics) {
+                        AnalyticsDashboardView(tasks: filteredTasks)
+                    }
+                }
+                .onAppear {
+                    if viewModel.modelContext !== modelContext {
+                        viewModel.modelContext = modelContext
+                        viewModel.fetchTasks()
+                    }
+                    // Scroll to Today section if it exists
+                    let sections = groupedFilteredTasks().map { $0.0 }
+                    if sections.contains("Today") {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                            withAnimation {
+                                proxy.scrollTo("Today", anchor: .top)
+                            }
                         }
                     }
                 }
-                .sheet(isPresented: $showAddTask) {
-                    AddEditTaskView { title, details, dueDate, reminderEnabled in
-                        viewModel.addTask(title: title, details: details, dueDate: dueDate, reminderEnabled: reminderEnabled)
-                        viewModel.fetchTasks()
+                .onChange(of: notificationDelegate.selectedTaskID) { newID in
+                    if let id = newID, let task = viewModel.tasks.first(where: { $0.id.uuidString == id }) {
+                        editTask = task
                     }
                 }
-                .sheet(item: $editTask) { task in
-                    AddEditTaskView(task: task) { title, details, dueDate, reminderEnabled in
-                        viewModel.updateTask(task, title: title, details: details, dueDate: dueDate, reminderEnabled: reminderEnabled)
-                        viewModel.fetchTasks()
-                    }
-                }
-                .sheet(isPresented: $showAnalytics) {
-                    AnalyticsDashboardView(tasks: filteredTasks)
-                }
-            }
-        }
-        .onAppear {
-            if viewModel.modelContext !== modelContext {
-                viewModel.modelContext = modelContext
-                viewModel.fetchTasks()
             }
         }
     }

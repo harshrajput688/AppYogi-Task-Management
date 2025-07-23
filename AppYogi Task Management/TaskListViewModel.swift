@@ -102,6 +102,7 @@ class TaskListViewModel: ObservableObject {
         content.title = "Task Reminder"
         content.body = task.title
         content.sound = .default
+        content.userInfo = ["taskID": task.id.uuidString]
         let triggerDate = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: task.dueDate)
         let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDate, repeats: false)
         let request = UNNotificationRequest(identifier: task.id.uuidString, content: content, trigger: trigger)
