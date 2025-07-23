@@ -32,77 +32,39 @@ struct ContentView: View {
             ScrollViewReader { proxy in
                 VStack {
                     SearchBar(text: $searchText)
-                    List {
-                        ForEach(groupedFilteredTasks(), id: \.0) { section, tasks in
-                            Section(header: Text(section).id(section)) {
-                                ForEach(tasks) { task in
-                                    HStack {
-                                        Button(action: { viewModel.toggleCompletion(task) }) {
-                                            Image(systemName: task.isCompleted ? "checkmark.circle.fill" : "circle")
-                                                .foregroundColor(task.isCompleted ? .green : .gray)
-                                        }
-                                        .buttonStyle(PlainButtonStyle())
-                                        VStack(alignment: .leading) {
-                                            Text(task.title)
-                                                .strikethrough(task.isCompleted)
-                                                .font(.headline)
-                                            if let details = task.details, !details.isEmpty {
-                                                Text(details)
-                                                    .font(.subheadline)
-                                                    .foregroundColor(.secondary)
-                                            }
-                                            Text("Due: \(task.dueDate, formatter: dateFormatter)")
-                                                .font(.caption)
-                                                .foregroundColor(.secondary)
-                                        }
-                                        Spacer()
-                                        Button(action: { editTask = task }) {
-                                            Image(systemName: "pencil")
-                                        }
-                                        .buttonStyle(BorderlessButtonStyle())
-                                        Button(action: { viewModel.deleteTask(task) }) {
-                                            Image(systemName: "trash")
-                                                .foregroundColor(.red)
-                                        }
-                                        .buttonStyle(BorderlessButtonStyle())
-                                    }
-                                    .contentShape(Rectangle())
-                                    .onTapGesture {
-                                        editTask = task
-                                    }
-                                }
-                            }
+                    if filteredTasks.isEmpty {
+                        emptyStateView
+                    } else {
+                        taskListView
+                    }
+                }
+                .navigationTitle("Tasks")
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Button(action: { showAddTask = true }) {
+                            Image(systemName: "plus")
                         }
                     }
-                    .listStyle(InsetGroupedListStyle())
-                    .navigationTitle("Tasks")
-                    .toolbar {
-                        ToolbarItem(placement: .navigationBarTrailing) {
-                            Button(action: { showAddTask = true }) {
-                                Image(systemName: "plus")
-                            }
-                        }
-                        ToolbarItem(placement: .navigationBarLeading) {
-                            Button(action: { showAnalytics = true }) {
-                                Image(systemName: "chart.bar.xaxis")
-                            }
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        Button(action: { showAnalytics = true }) {
+                            Image(systemName: "chart.bar.xaxis")
                         }
                     }
-                    .sheet(isPresented: $showAddTask) {
-                        AddEditTaskView { title, details, dueDate, reminderEnabled, isCompleted in
-                            viewModel.addTask(title: title, details: details, dueDate: dueDate, reminderEnabled: reminderEnabled, isCompleted: isCompleted)
-                            viewModel.fetchTasks()
-                        }
+                }
+                .sheet(isPresented: $showAddTask) {
+                    AddEditTaskView { title, details, dueDate, reminderEnabled, isCompleted in
+                        viewModel.addTask(title: title, details: details, dueDate: dueDate, reminderEnabled: reminderEnabled, isCompleted: isCompleted)
+                        viewModel.fetchTasks()
                     }
-                    .sheet(item: $editTask) { task in
-                        AddEditTaskView(task: task) { title, details, dueDate, reminderEnabled, isCompleted in
-                            viewModel.updateTask(task, title: title, details: details, dueDate: dueDate, reminderEnabled: reminderEnabled, isCompleted: isCompleted)
-                            viewModel.fetchTasks()
-                        }
+                }
+                .sheet(item: $editTask) { task in
+                    AddEditTaskView(task: task) { title, details, dueDate, reminderEnabled, isCompleted in
+                        viewModel.updateTask(task, title: title, details: details, dueDate: dueDate, reminderEnabled: reminderEnabled, isCompleted: isCompleted)
+                        viewModel.fetchTasks()
                     }
-                    .sheet(isPresented: $showAnalytics) {
-                        AnalyticsDashboardView(tasks: filteredTasks)
-                    }
+                }
+                .sheet(isPresented: $showAnalytics) {
+                    AnalyticsDashboardView(tasks: filteredTasks)
                 }
                 .onAppear {
                     if viewModel.modelContext !== modelContext {
@@ -126,6 +88,77 @@ struct ContentView: View {
                 }
             }
         }
+    }
+    
+    private var emptyStateView: some View {
+        return VStack(spacing: 16) {
+            Spacer()
+            Image(systemName: "tray")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 64, height: 64)
+                .foregroundColor(.secondary)
+            Text("No tasks added yet")
+                .font(.title2)
+                .foregroundColor(.secondary)
+            Text("Tap below to add your first task!")
+                .font(.body)
+                .foregroundColor(.secondary)
+            Button(action: { showAddTask = true }) {
+                Label("Add Task", systemImage: "plus")
+                    .font(.headline)
+                    .padding()
+                    .background(Capsule().fill(Color.accentColor))
+                    .foregroundColor(.white)
+            }
+            Spacer()
+        }
+    }
+    
+    private var taskListView: some View {
+        return List {
+            ForEach(groupedFilteredTasks(), id: \.0) { section, tasks in
+                Section(header: Text(section).id(section)) {
+                    ForEach(tasks) { task in
+                        HStack {
+                            Button(action: { viewModel.toggleCompletion(task) }) {
+                                Image(systemName: task.isCompleted ? "checkmark.circle.fill" : "circle")
+                                    .foregroundColor(task.isCompleted ? .green : .gray)
+                            }
+                            .buttonStyle(PlainButtonStyle())
+                            VStack(alignment: .leading) {
+                                Text(task.title)
+                                    .strikethrough(task.isCompleted)
+                                    .font(.headline)
+                                if let details = task.details, !details.isEmpty {
+                                    Text(details)
+                                        .font(.subheadline)
+                                        .foregroundColor(.secondary)
+                                }
+                                Text("Due: \(task.dueDate, formatter: dateFormatter)")
+                                    .font(.caption)
+                                    .foregroundColor(.secondary)
+                            }
+                            Spacer()
+                            Button(action: { editTask = task }) {
+                                Image(systemName: "pencil")
+                            }
+                            .buttonStyle(BorderlessButtonStyle())
+                            Button(action: { viewModel.deleteTask(task) }) {
+                                Image(systemName: "trash")
+                                    .foregroundColor(.red)
+                            }
+                            .buttonStyle(BorderlessButtonStyle())
+                        }
+                        .contentShape(Rectangle())
+                        .onTapGesture {
+                            editTask = task
+                        }
+                    }
+                }
+            }
+        }
+        .listStyle(InsetGroupedListStyle())
     }
     
     private func groupedFilteredTasks() -> [(String, [TaskItem])] {
