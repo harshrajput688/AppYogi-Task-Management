@@ -64,7 +64,7 @@ struct ContentView: View {
                     }
                 }
                 .sheet(isPresented: $showAnalytics) {
-                    AnalyticsDashboardView(tasks: filteredTasks)
+                    AnalyticsView(tasks: filteredTasks)
                 }
                 .onAppear {
                     if viewModel.modelContext !== modelContext {
@@ -81,8 +81,8 @@ struct ContentView: View {
                         }
                     }
                 }
-                .onChange(of: notificationDelegate.selectedTaskID) { newID in
-                    if let id = newID, let task = viewModel.tasks.first(where: { $0.id.uuidString == id }) {
+                .onChange(of: notificationDelegate.selectedTaskID) {
+                    if let id = notificationDelegate.selectedTaskID, let task = viewModel.tasks.first(where: { $0.id.uuidString == id }) {
                         editTask = task
                     }
                 }
