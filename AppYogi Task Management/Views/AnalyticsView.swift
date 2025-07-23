@@ -9,7 +9,6 @@ import SwiftUI
 import SwiftData
 
 struct AnalyticsView: View {
-    @Environment(\.colorScheme) private var colorScheme
     let tasks: [TaskItem]
     
     var completedCount: Int {
@@ -18,42 +17,92 @@ struct AnalyticsView: View {
     var pendingCount: Int {
         tasks.filter { !$0.isCompleted }.count
     }
+    
+    var totalCount: Int {
+        tasks.count
+    }
+
+    var todayCount: Int {
+        let today = Calendar.current.startOfDay(for: Date())
+        return tasks.filter {
+            Calendar.current.isDate($0.dueDate, inSameDayAs: today)
+        }.count
+    }
+
+    var upcomingCount: Int {
+        let today = Calendar.current.startOfDay(for: Date())
+        return tasks.filter {
+            $0.dueDate > today
+        }.count
+    }
+
+    var overdueCount: Int {
+        let today = Calendar.current.startOfDay(for: Date())
+        return tasks.filter {
+            $0.dueDate < today && !$0.isCompleted
+        }.count
+    }
 
     
     var body: some View {
         NavigationStack {
-            VStack(spacing: 20) {
-                // Summary Cards
-                HStack(spacing: 16) {
-                    AnalyticsCard(
-                        title: "Completed",
-                        count: completedCount,
-                        icon: "checkmark.circle.fill",
-                        color: .green
-                    )
+            ScrollView{
+                VStack(spacing: 20) {
+                    // Summary Cards
+                    
+                    VStack {
+                        AnalyticsCard(
+                            title: "Todays Tasks",
+                            count: todayCount,
+                            icon: "calendar",
+                            color: .blue
+                        )
+                        AnalyticsCard(
+                            title: "Upcoming Tasks",
+                            count: upcomingCount,
+                            icon: "calendar",
+                            color: .blue
+                        )
+                        AnalyticsCard(
+                            title: "Overdue Tasks",
+                            count: overdueCount,
+                            icon: "calendar",
+                            color: .red
+                        )
+                    }
+                    .frame(maxWidth: .infinity)
+                    
+                    
+                    
+                    HStack(spacing: 16) {
+                        AnalyticsCard(
+                            title: "Completed",
+                            count: completedCount,
+                            icon: "checkmark.circle.fill",
+                            color: .green
+                        )
+                        
+                        AnalyticsCard(
+                            title: "Pending",
+                            count: pendingCount,
+                            icon: "clock.fill",
+                            color: .orange
+                        )
+                    }
                     
                     AnalyticsCard(
-                        title: "Pending",
-                        count: pendingCount,
-                        icon: "clock.fill",
-                        color: .orange
+                        title: "Total Tasks",
+                        count: totalCount,
+                        icon: "calendar",
+                        color: .blue
                     )
+                    .frame(maxWidth: .infinity)
+                    
+                    Spacer()
                 }
-                
-//                AnalyticsCard(
-//                    title: "Upcoming",
-//                    count: vm.upcomingCount,
-//                    icon: "calendar",
-//                    color: .blue
-//                )
-//                .frame(maxWidth: .infinity)
-                
-                Spacer()
+                .padding()
+                .navigationTitle("Analytics")
             }
-            .padding()
-            .navigationTitle("Analytics")
-            .background(colorScheme == .dark ? Color.black : Color(.systemGray6))
-//            .background(colorScheme == .dark ? Color.black : Color(.systemGray6))
         }
     }
 }
