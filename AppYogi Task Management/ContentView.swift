@@ -66,6 +66,10 @@ struct ContentView: View {
                                         }
                                         .buttonStyle(BorderlessButtonStyle())
                                     }
+                                    .contentShape(Rectangle())
+                                    .onTapGesture {
+                                        editTask = task
+                                    }
                                 }
                             }
                         }
