@@ -32,8 +32,8 @@ class TaskListViewModel: ObservableObject {
         }
     }
     
-    func addTask(title: String, details: String?, dueDate: Date, reminderEnabled: Bool) {
-        let newTask = TaskItem(title: title, details: details, dueDate: dueDate, isCompleted: false, reminderEnabled: reminderEnabled)
+    func addTask(title: String, details: String?, dueDate: Date, reminderEnabled: Bool, isCompleted: Bool) {
+        let newTask = TaskItem(title: title, details: details, dueDate: dueDate, isCompleted: isCompleted, reminderEnabled: reminderEnabled)
         modelContext.insert(newTask)
         if reminderEnabled {
             scheduleNotification(for: newTask)
@@ -41,13 +41,14 @@ class TaskListViewModel: ObservableObject {
         fetchTasks()
     }
     
-    func updateTask(_ task: TaskItem, title: String, details: String?, dueDate: Date, reminderEnabled: Bool) {
+    func updateTask(_ task: TaskItem, title: String, details: String?, dueDate: Date, reminderEnabled: Bool, isCompleted: Bool) {
         let oldReminder = task.reminderEnabled
         let oldDueDate = task.dueDate
         task.title = title
         task.details = details
         task.dueDate = dueDate
         task.reminderEnabled = reminderEnabled
+        task.isCompleted = isCompleted
         if oldReminder && (!reminderEnabled || dueDate != oldDueDate) {
             removeNotification(for: task)
         }

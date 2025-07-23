@@ -89,14 +89,14 @@ struct ContentView: View {
                         }
                     }
                     .sheet(isPresented: $showAddTask) {
-                        AddEditTaskView { title, details, dueDate, reminderEnabled in
-                            viewModel.addTask(title: title, details: details, dueDate: dueDate, reminderEnabled: reminderEnabled)
+                        AddEditTaskView { title, details, dueDate, reminderEnabled, isCompleted in
+                            viewModel.addTask(title: title, details: details, dueDate: dueDate, reminderEnabled: reminderEnabled, isCompleted: isCompleted)
                             viewModel.fetchTasks()
                         }
                     }
                     .sheet(item: $editTask) { task in
-                        AddEditTaskView(task: task) { title, details, dueDate, reminderEnabled in
-                            viewModel.updateTask(task, title: title, details: details, dueDate: dueDate, reminderEnabled: reminderEnabled)
+                        AddEditTaskView(task: task) { title, details, dueDate, reminderEnabled, isCompleted in
+                            viewModel.updateTask(task, title: title, details: details, dueDate: dueDate, reminderEnabled: reminderEnabled, isCompleted: isCompleted)
                             viewModel.fetchTasks()
                         }
                     }
