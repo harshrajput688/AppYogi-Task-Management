@@ -1,0 +1,563 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXContainerItemProxy section */
+		91589F512E3119E400CCB5FD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 91589F3B2E3119E200CCB5FD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 91589F422E3119E200CCB5FD;
+			remoteInfo = "AppYogi Task Management";
+		};
+		91589F5B2E3119E400CCB5FD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 91589F3B2E3119E200CCB5FD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 91589F422E3119E200CCB5FD;
+			remoteInfo = "AppYogi Task Management";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		91589F432E3119E200CCB5FD /* AppYogi Task Management.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "AppYogi Task Management.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		91589F502E3119E400CCB5FD /* AppYogi Task ManagementTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "AppYogi Task ManagementTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		91589F5A2E3119E400CCB5FD /* AppYogi Task ManagementUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "AppYogi Task ManagementUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		91589F452E3119E200CCB5FD /* AppYogi Task Management */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "AppYogi Task Management";
+			sourceTree = "<group>";
+		};
+		91589F532E3119E400CCB5FD /* AppYogi Task ManagementTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "AppYogi Task ManagementTests";
+			sourceTree = "<group>";
+		};
+		91589F5D2E3119E400CCB5FD /* AppYogi Task ManagementUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "AppYogi Task ManagementUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		91589F402E3119E200CCB5FD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		91589F4D2E3119E400CCB5FD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		91589F572E3119E400CCB5FD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		91589F3A2E3119E200CCB5FD = {
+			isa = PBXGroup;
+			children = (
+				91589F452E3119E200CCB5FD /* AppYogi Task Management */,
+				91589F532E3119E400CCB5FD /* AppYogi Task ManagementTests */,
+				91589F5D2E3119E400CCB5FD /* AppYogi Task ManagementUITests */,
+				91589F442E3119E200CCB5FD /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		91589F442E3119E200CCB5FD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				91589F432E3119E200CCB5FD /* AppYogi Task Management.app */,
+				91589F502E3119E400CCB5FD /* AppYogi Task ManagementTests.xctest */,
+				91589F5A2E3119E400CCB5FD /* AppYogi Task ManagementUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		91589F422E3119E200CCB5FD /* AppYogi Task Management */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 91589F642E3119E400CCB5FD /* Build configuration list for PBXNativeTarget "AppYogi Task Management" */;
+			buildPhases = (
+				91589F3F2E3119E200CCB5FD /* Sources */,
+				91589F402E3119E200CCB5FD /* Frameworks */,
+				91589F412E3119E200CCB5FD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				91589F452E3119E200CCB5FD /* AppYogi Task Management */,
+			);
+			name = "AppYogi Task Management";
+			packageProductDependencies = (
+			);
+			productName = "AppYogi Task Management";
+			productReference = 91589F432E3119E200CCB5FD /* AppYogi Task Management.app */;
+			productType = "com.apple.product-type.application";
+		};
+		91589F4F2E3119E400CCB5FD /* AppYogi Task ManagementTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 91589F672E3119E400CCB5FD /* Build configuration list for PBXNativeTarget "AppYogi Task ManagementTests" */;
+			buildPhases = (
+				91589F4C2E3119E400CCB5FD /* Sources */,
+				91589F4D2E3119E400CCB5FD /* Frameworks */,
+				91589F4E2E3119E400CCB5FD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				91589F522E3119E400CCB5FD /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				91589F532E3119E400CCB5FD /* AppYogi Task ManagementTests */,
+			);
+			name = "AppYogi Task ManagementTests";
+			packageProductDependencies = (
+			);
+			productName = "AppYogi Task ManagementTests";
+			productReference = 91589F502E3119E400CCB5FD /* AppYogi Task ManagementTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		91589F592E3119E400CCB5FD /* AppYogi Task ManagementUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 91589F6A2E3119E400CCB5FD /* Build configuration list for PBXNativeTarget "AppYogi Task ManagementUITests" */;
+			buildPhases = (
+				91589F562E3119E400CCB5FD /* Sources */,
+				91589F572E3119E400CCB5FD /* Frameworks */,
+				91589F582E3119E400CCB5FD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				91589F5C2E3119E400CCB5FD /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				91589F5D2E3119E400CCB5FD /* AppYogi Task ManagementUITests */,
+			);
+			name = "AppYogi Task ManagementUITests";
+			packageProductDependencies = (
+			);
+			productName = "AppYogi Task ManagementUITests";
+			productReference = 91589F5A2E3119E400CCB5FD /* AppYogi Task ManagementUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		91589F3B2E3119E200CCB5FD /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1640;
+				LastUpgradeCheck = 1640;
+				TargetAttributes = {
+					91589F422E3119E200CCB5FD = {
+						CreatedOnToolsVersion = 16.4;
+					};
+					91589F4F2E3119E400CCB5FD = {
+						CreatedOnToolsVersion = 16.4;
+						TestTargetID = 91589F422E3119E200CCB5FD;
+					};
+					91589F592E3119E400CCB5FD = {
+						CreatedOnToolsVersion = 16.4;
+						TestTargetID = 91589F422E3119E200CCB5FD;
+					};
+				};
+			};
+			buildConfigurationList = 91589F3E2E3119E200CCB5FD /* Build configuration list for PBXProject "AppYogi Task Management" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 91589F3A2E3119E200CCB5FD;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 91589F442E3119E200CCB5FD /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				91589F422E3119E200CCB5FD /* AppYogi Task Management */,
+				91589F4F2E3119E400CCB5FD /* AppYogi Task ManagementTests */,
+				91589F592E3119E400CCB5FD /* AppYogi Task ManagementUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		91589F412E3119E200CCB5FD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		91589F4E2E3119E400CCB5FD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		91589F582E3119E400CCB5FD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		91589F3F2E3119E200CCB5FD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		91589F4C2E3119E400CCB5FD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		91589F562E3119E400CCB5FD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		91589F522E3119E400CCB5FD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 91589F422E3119E200CCB5FD /* AppYogi Task Management */;
+			targetProxy = 91589F512E3119E400CCB5FD /* PBXContainerItemProxy */;
+		};
+		91589F5C2E3119E400CCB5FD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 91589F422E3119E200CCB5FD /* AppYogi Task Management */;
+			targetProxy = 91589F5B2E3119E400CCB5FD /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		91589F622E3119E400CCB5FD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 4WJ62LZGS6;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		91589F632E3119E400CCB5FD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 4WJ62LZGS6;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		91589F652E3119E400CCB5FD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 4WJ62LZGS6;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "harsh.AppYogi-Task-Management";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		91589F662E3119E400CCB5FD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 4WJ62LZGS6;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "harsh.AppYogi-Task-Management";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		91589F682E3119E400CCB5FD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 4WJ62LZGS6;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "harsh.AppYogi-Task-ManagementTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AppYogi Task Management.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/AppYogi Task Management";
+			};
+			name = Debug;
+		};
+		91589F692E3119E400CCB5FD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 4WJ62LZGS6;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "harsh.AppYogi-Task-ManagementTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AppYogi Task Management.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/AppYogi Task Management";
+			};
+			name = Release;
+		};
+		91589F6B2E3119E400CCB5FD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 4WJ62LZGS6;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "harsh.AppYogi-Task-ManagementUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "AppYogi Task Management";
+			};
+			name = Debug;
+		};
+		91589F6C2E3119E400CCB5FD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 4WJ62LZGS6;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "harsh.AppYogi-Task-ManagementUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "AppYogi Task Management";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		91589F3E2E3119E200CCB5FD /* Build configuration list for PBXProject "AppYogi Task Management" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				91589F622E3119E400CCB5FD /* Debug */,
+				91589F632E3119E400CCB5FD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		91589F642E3119E400CCB5FD /* Build configuration list for PBXNativeTarget "AppYogi Task Management" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				91589F652E3119E400CCB5FD /* Debug */,
+				91589F662E3119E400CCB5FD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		91589F672E3119E400CCB5FD /* Build configuration list for PBXNativeTarget "AppYogi Task ManagementTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				91589F682E3119E400CCB5FD /* Debug */,
+				91589F692E3119E400CCB5FD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		91589F6A2E3119E400CCB5FD /* Build configuration list for PBXNativeTarget "AppYogi Task ManagementUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				91589F6B2E3119E400CCB5FD /* Debug */,
+				91589F6C2E3119E400CCB5FD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 91589F3B2E3119E200CCB5FD /* Project object */;
+}
