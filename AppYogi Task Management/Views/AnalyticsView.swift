@@ -8,20 +8,29 @@
 import SwiftUI
 import SwiftData
 
+/// A view that displays task analytics and statistics
 struct AnalyticsView: View {
-    let tasks: [TaskItem]
+    // MARK: - Properties
+    let tasks: [TaskItem]  // The list of tasks to analyze
     
+    // MARK: - Computed Properties
+    
+    /// Count of completed tasks
     var completedCount: Int {
         tasks.filter { $0.isCompleted }.count
     }
+    
+    /// Count of pending (incomplete) tasks
     var pendingCount: Int {
         tasks.filter { !$0.isCompleted }.count
     }
     
+    /// Total count of all tasks
     var totalCount: Int {
         tasks.count
     }
 
+    /// Count of tasks due today
     var todayCount: Int {
         let today = Calendar.current.startOfDay(for: Date())
         return tasks.filter {
@@ -29,6 +38,7 @@ struct AnalyticsView: View {
         }.count
     }
 
+    /// Count of upcoming tasks (future due dates)
     var upcomingCount: Int {
         let today = Calendar.current.startOfDay(for: Date())
         return tasks.filter {
@@ -36,6 +46,7 @@ struct AnalyticsView: View {
         }.count
     }
 
+    /// Count of overdue incomplete tasks
     var overdueCount: Int {
         let today = Calendar.current.startOfDay(for: Date())
         return tasks.filter {
@@ -43,16 +54,15 @@ struct AnalyticsView: View {
         }.count
     }
 
-    
+    // MARK: - View Body
     var body: some View {
         NavigationStack {
-            ScrollView{
+            ScrollView {
                 VStack(spacing: 20) {
-                    // Summary Cards
-                    
+                    // First column of analytics cards
                     VStack {
                         AnalyticsCard(
-                            title: "Todays Tasks",
+                            title: "Today's Tasks",
                             count: todayCount,
                             icon: "calendar",
                             color: .blue
@@ -72,8 +82,7 @@ struct AnalyticsView: View {
                     }
                     .frame(maxWidth: .infinity)
                     
-                    
-                    
+                    // Second row with completion stats
                     HStack(spacing: 16) {
                         AnalyticsCard(
                             title: "Completed",
@@ -90,6 +99,7 @@ struct AnalyticsView: View {
                         )
                     }
                     
+                    // Total tasks card
                     AnalyticsCard(
                         title: "Total Tasks",
                         count: totalCount,
@@ -107,33 +117,8 @@ struct AnalyticsView: View {
     }
 }
 
-struct AnalyticsCard: View {
-    let title: String
-    let count: Int
-    let icon: String
-    let color: Color
-    
-    var body: some View {
-        VStack(alignment: .leading, spacing: 8) {
-            HStack {
-                Image(systemName: icon)
-                    .foregroundColor(color)
-                Text(title)
-                    .font(.headline)
-                Spacer()
-            }
-            
-            Text("\(count)")
-                .font(.largeTitle.bold())
-        }
-        .padding()
-        .background(Color(.secondarySystemBackground))
-        .cornerRadius(12)
-    }
-}
 
+// MARK: - Preview
 #Preview {
     AnalyticsView(tasks: [])
 }
-
-
