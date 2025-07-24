@@ -165,14 +165,14 @@ struct ContentView: View {
         let calendar = Calendar.current
         let today = calendar.startOfDay(for: Date())
         let tomorrow = calendar.date(byAdding: .day, value: 1, to: today)!
-        var overdueTasks: [TaskItem] = []
+        var pastTasks: [TaskItem] = []
         var todayTasks: [TaskItem] = []
         var tomorrowTasks: [TaskItem] = []
         var upcomingTasks: [TaskItem] = []
         for task in filteredTasks {
             let taskDay = calendar.startOfDay(for: task.dueDate)
             if taskDay < today {
-                overdueTasks.append(task)
+                pastTasks.append(task)
             } else if taskDay == today {
                 todayTasks.append(task)
             } else if taskDay == tomorrow {
@@ -182,7 +182,7 @@ struct ContentView: View {
             }
         }
         var result: [(String, [TaskItem])] = []
-        if !overdueTasks.isEmpty { result.append(("Overdue", overdueTasks)) }
+        if !pastTasks.isEmpty { result.append(("Past Tasks", pastTasks)) }
         if !todayTasks.isEmpty { result.append(("Today", todayTasks)) }
         if !tomorrowTasks.isEmpty { result.append(("Tomorrow", tomorrowTasks)) }
         if !upcomingTasks.isEmpty { result.append(("Upcoming", upcomingTasks)) }

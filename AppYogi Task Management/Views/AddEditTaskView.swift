@@ -5,13 +5,13 @@ struct AddEditTaskView: View {
     @Environment(\.dismiss) private var dismiss
     let task: TaskItem?
     var onSave: (String, String?, Date, Bool, Bool) -> Void
-    
+
     @State private var title: String = ""
     @State private var details: String = ""
     @State private var dueDate: Date = Date()
     @State private var reminderEnabled: Bool = false
     @State private var isCompleted: Bool = false
-    
+
     init(task: TaskItem? = nil, onSave: @escaping (String, String?, Date, Bool, Bool) -> Void) {
         self.task = task
         self.onSave = onSave
@@ -21,15 +21,30 @@ struct AddEditTaskView: View {
         _reminderEnabled = State(initialValue: task?.reminderEnabled ?? false)
         _isCompleted = State(initialValue: task?.isCompleted ?? false)
     }
-    
+
     var body: some View {
         NavigationView {
             Form {
                 Section(header: Text("Task Info")) {
                     TextField("Title", text: $title)
                     TextField("Description", text: $details)
+
                     DatePicker("Due Date", selection: $dueDate, displayedComponents: [.date, .hourAndMinute])
+                        .onChange(of: dueDate) {
+                            if dueDate < Date() {
+                                reminderEnabled = false
+                            }
+                        }
+
                     Toggle("Enable Reminder", isOn: $reminderEnabled)
+                        .disabled(dueDate < Date())
+
+                    if dueDate < Date() {
+                        Text("Reminders can't be set for past dates and times.")
+                            .font(.caption)
+                            .foregroundColor(.red)
+                    }
+
                     Toggle("Completed", isOn: $isCompleted)
                 }
             }
@@ -47,9 +62,15 @@ struct AddEditTaskView: View {
                 }
             }
         }
+        .onAppear {
+            // Ensure correct state when view loads
+            if dueDate < Date() {
+                reminderEnabled = false
+            }
+        }
     }
 }
 
 #Preview {
-    AddEditTaskView() { _,_,_,_,_ in }
-} 
+    AddEditTaskView { _, _, _, _, _ in }
+}
